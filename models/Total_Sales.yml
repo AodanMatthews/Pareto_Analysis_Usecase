@@ -1,0 +1,31 @@
+unique_name: Total_Sales
+object_type: model
+label: Total_Sales
+dimensions:
+  - Sales_Order_Number
+  - Sales_Reasons
+  - Product_Info
+  - Order_Date
+metrics:
+  - unique_name: Sales_Order_Line_Number_sum
+  - unique_name: Order_Quantity_sum
+  - unique_name: Unit_Price_sum
+  - unique_name: Sales_Amount_sum
+  - unique_name: Tax_Amount_sum
+relationships:
+  - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - orderdatekey
+    to:
+      dimension: Date Dimension Generated
+      level: DateKeyDecimal
+  - unique_name: factinternetsales_shipdatekey_to_Date Dimension Generated_DateKeyDecimal
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - shipdatekey
+    to:
+      dimension: Date Dimension Generated
+      level: DateKeyDecimal
