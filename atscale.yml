@@ -1,0 +1,6 @@
+unique_name: MDX-Dax-Conversion-Test
+object_type: catalog
+label: MDX-Dax-Conversion-Test
+aggressive_agg_promotion: false
+as_version: 1
+build_speculative_aggs: true

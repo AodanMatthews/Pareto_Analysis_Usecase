@@ -1,0 +1,7 @@
+unique_name: Total Sales
+object_type: metric_calc
+label: Total Sales
+description: Total Sales Ignoring Filters
+expression: '[Measures].[Sales_Amount_sum] / ALLMEMBER([Measures].[Sales_Amount_sum])'
+is_hidden: false
+mdx_aggregate_function: SUM

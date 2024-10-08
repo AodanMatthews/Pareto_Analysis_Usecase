@@ -1,0 +1,18 @@
+unique_name: Product_Info
+object_type: dimension
+label: Product_Info
+hierarchies:
+  - unique_name: Product_Info_Hierarchy
+    label: Product Info Hierarchy
+    levels:
+      - unique_name: Product_Info_Level
+is_degenerate: true
+level_attributes:
+  - unique_name: Product_Info_Level
+    label: Product Info Level
+    contains_unique_names: false
+    dataset: factinternetsales
+    key_columns:
+      - product_info
+    name_column: product_info
+type: standard

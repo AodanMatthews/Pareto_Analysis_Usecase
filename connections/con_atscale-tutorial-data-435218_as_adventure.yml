@@ -1,0 +1,6 @@
+unique_name: con_atscale-tutorial-data-435218_as_adventure
+object_type: connection
+label: con_atscale-tutorial-data-435218_as_adventure
+as_connection: BigQuery
+database: atscale-tutorial-data-435218
+schema: as_adventure
