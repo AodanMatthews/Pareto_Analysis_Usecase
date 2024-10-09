@@ -1,0 +1,10 @@
+unique_name: Cumulative Sales %
+object_type: metric_calc
+label: Cumulative Sales %
+expression: |-
+  Sum(
+    [Sales_Order_Number].[Sales_Order_Number_Hierarchy].CurrentMember,
+    [Measures]. [Sales % of Total]
+    )
+format: percent
+is_hidden: false

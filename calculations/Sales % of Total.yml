@@ -1,0 +1,6 @@
+unique_name: Sales % of Total
+object_type: metric_calc
+label: Sales % of Total
+description: Percentage of Total Sales
+expression: DIVIDE( [Measures].[Sales_Amount_sum], [Measures].[Total Sales] )
+is_hidden: false

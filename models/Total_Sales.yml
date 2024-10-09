@@ -9,9 +9,11 @@ dimensions:
 metrics:
   - unique_name: Sales_Order_Line_Number_sum
   - unique_name: Order_Quantity_sum
-  - unique_name: Unit_Price_sum
   - unique_name: Sales_Amount_sum
   - unique_name: Tax_Amount_sum
+  - unique_name: Unit_Price_sum
+  - unique_name: Total Sales
+  - unique_name: Sales % of Total
 relationships:
   - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
     from:
