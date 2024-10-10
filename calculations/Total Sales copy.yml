@@ -1,7 +1,0 @@
-unique_name: Total Sales copy
-object_type: metric_calc
-label: Total Sales
-description: Total Sales Ignoring Filters
-expression: ALLMEMBER([Measures].[Sales_Amount_sum])
-format: standard
-is_hidden: false

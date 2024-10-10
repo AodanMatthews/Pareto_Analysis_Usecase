@@ -5,32 +5,32 @@ columns:
   - name: salesordernumber
     data_type: string
   - name: salesorderlinenumber
-    data_type: long
+    data_type: int
   - name: sales_reasons
     data_type: string
   - name: productkey
-    data_type: long
+    data_type: int
   - name: product_info
     data_type: string
   - name: orderdatekey
-    data_type: long
+    data_type: int
   - name: customerkey
-    data_type: long
+    data_type: int
   - name: orderquantity
-    data_type: long
+    data_type: int
   - name: unitprice
-    data_type: double
+    data_type: float
   - name: salesamount
-    data_type: double
+    data_type: float
   - name: taxamt
-    data_type: double
+    data_type: float
   - name: orderdate
     data_type: string
   - name: shipdatekey
-    data_type: long
+    data_type: int
   - name: currencykey
-    data_type: long
-connection_id: con_atscale-tutorial-data-435218_as_adventure
+    data_type: int
+connection_id: con_atscale_inc_atscale_tutorials_as_adventure
 sql: |-
   Select * 
 

@@ -1,0 +1,6 @@
+unique_name: con_atscale_inc_atscale_tutorials_as_adventure
+object_type: connection
+label: con_atscale_inc_atscale_tutorials_as_adventure
+as_connection: Databricks
+database: atscale_inc_atscale_tutorials
+schema: as_adventure

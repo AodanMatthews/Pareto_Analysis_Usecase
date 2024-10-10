@@ -1,6 +1,6 @@
-unique_name: Total_Sales
+unique_name: Total_Sales_DB
 object_type: model
-label: Total_Sales
+label: Total_Sales_DB
 dimensions:
   - Sales_Order_Number
   - Sales_Reasons
@@ -9,9 +9,9 @@ dimensions:
 metrics:
   - unique_name: Sales_Order_Line_Number_sum
   - unique_name: Order_Quantity_sum
+  - unique_name: Unit_Price_sum
   - unique_name: Sales_Amount_sum
   - unique_name: Tax_Amount_sum
-  - unique_name: Unit_Price_sum
   - unique_name: Total Sales
   - unique_name: Sales % of Total
 relationships:
