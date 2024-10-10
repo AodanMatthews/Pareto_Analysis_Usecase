@@ -3,7 +3,9 @@ object_type: metric_calc
 label: Cumulative Sales
 expression: |-
   Sum(
-    [Sales_Order_Number].[Sales_Order_Number_Hierarchy].CurrentMember.lag(29),
+  [Sales_Order_Number].[Sales_Order_Number_Hierarchy].CurrentMember.lag(359)
+  :
+    [Sales_Order_Number].[Sales_Order_Number_Hierarchy].CurrentMember,
     [Measures].[Sales_Amount_sum]
     )
 format: standard

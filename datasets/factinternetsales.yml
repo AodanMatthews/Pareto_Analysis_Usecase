@@ -31,4 +31,10 @@ columns:
   - name: currencykey
     data_type: long
 connection_id: con_atscale-tutorial-data-435218_as_adventure
-table: factinternetsales
+sql: |-
+  Select * 
+
+  From as_adventure.factinternetsales
+
+  where  orderdate >= '"2006-01-01 00:00:00"'
+    AND orderdate < '"2006-12-31 00:00:00"'

@@ -1,6 +1,0 @@
-unique_name: Sales Rank by Sales Order Number
-object_type: metric_calc
-label: Sales Rank by Sales Order Number
-expression: RANK(  [Sales_Order_number], [Measures].[Sales_Amount_sum] )
-format: standard
-is_hidden: false
