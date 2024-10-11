@@ -4,8 +4,11 @@ label: Total_Sales_DB
 dimensions:
   - Sales_Order_Number
   - Sales_Reasons
-  - Product_Info
   - Order_Date
+  - Color
+  - Size
+  - Weight
+  - Style
 metrics:
   - unique_name: Sales_Order_Line_Number_sum
   - unique_name: Order_Quantity_sum

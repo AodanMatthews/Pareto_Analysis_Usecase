@@ -10,8 +10,26 @@ columns:
     data_type: string
   - name: productkey
     data_type: int
+
   - name: product_info
+    map:
+      field_terminator: ","
+      key_terminator: ':'
+      key_type: String
+      value_type: String
+  - name: color
     data_type: string
+    parent_column: product_info
+  - name: size
+    data_type: string
+    parent_column: product_info
+  - name: style
+    data_type: string
+    parent_column: product_info
+  - name: weight
+    data_type: string
+    parent_column: product_info
+
   - name: orderdatekey
     data_type: int
   - name: customerkey
