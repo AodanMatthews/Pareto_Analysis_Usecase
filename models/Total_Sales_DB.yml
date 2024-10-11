@@ -12,8 +12,12 @@ metrics:
   - unique_name: Unit_Price_sum
   - unique_name: Sales_Amount_sum
   - unique_name: Tax_Amount_sum
-  - unique_name: Total Sales
-  - unique_name: Sales % of Total
+  - unique_name: Total_Sales_sum
+  - unique_name: Sales_%_of_Total
+  - unique_name: Cumulative_Sales_sum
+  - unique_name: Sales_Rank_sum
+  - unique_name: Cummulative_Sales_%_of_Total
+  - unique_name: blank
 relationships:
   - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
     from:

@@ -1,0 +1,6 @@
+unique_name: Cumulative_Sales_sum
+object_type: metric
+label: Cumulative_Sales_sum
+calculation_method: maximum
+column: cumulativesales
+dataset: factinternetsales

@@ -75,4 +75,4 @@ sql: |-
             MONTHNAME(date_day) as month_of_year_name,
             QUARTER(date_day) as quarter_of_year,
             concat('Quarter ', QUARTER(date_day)) as quarter_of_year_name
-          FROM(SELECT explode(sequence(DATE'2005-07-01', DATE'2026-12-31', INTERVAL 1 DAY)) as date_day)
+          FROM(SELECT explode(sequence(DATE'2006-01-01', DATE'2006-03-31', INTERVAL 1 DAY)) as date_day)
