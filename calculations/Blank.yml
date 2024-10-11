@@ -1,5 +1,5 @@
-unique_name: blank
+unique_name: Blank
 object_type: metric_calc
-label: blank
+label: Blank
 expression: '" "'
 is_hidden: false

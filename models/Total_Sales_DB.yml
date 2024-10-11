@@ -19,8 +19,8 @@ metrics:
   - unique_name: Sales_%_of_Total
   - unique_name: Cumulative_Sales_sum
   - unique_name: Sales_Rank_sum
-  - unique_name: Cummulative_Sales_%_of_Total
-  - unique_name: blank
+  - unique_name: Cumulative_Sales_%_of_Total
+  - unique_name: Blank
 relationships:
   - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
     from:
