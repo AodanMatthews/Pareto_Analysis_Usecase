@@ -3,4 +3,4 @@ object_type: metric
 label: Order_Quantity_sum
 calculation_method: sum
 column: orderquantity
-dataset: factinternetsales
+dataset: factinternetsales_ranked_by_product
