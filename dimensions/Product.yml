@@ -1,0 +1,45 @@
+unique_name: Product
+object_type: dimension
+label: Product
+hierarchies:
+  - unique_name: Product Hierarchy
+    label: Product
+    levels:
+      - unique_name: Product_Code
+        secondary_attributes:
+          - unique_name: Product_Sub_Category
+            label: Product_Sub_Category
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - productsubcategorykey
+            name_column: productsubcategoryname
+            sort_column: productsubcategorykey
+          - unique_name: Product_Line
+            label: Product_Line
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - productline
+            name_column: productline
+          - unique_name: Product_Name
+            label: Product_Name
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - productkey
+            name_column: englishproductname
+level_attributes:
+  - unique_name: Product_Code
+    label: Product_Code
+    contains_unique_names: false
+    dataset: dimproduct
+    is_unique_key: false
+    key_columns:
+      - productkey
+    name_column: productkey
+    sort_column: productkey
+type: standard

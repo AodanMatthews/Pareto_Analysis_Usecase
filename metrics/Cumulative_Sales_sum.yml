@@ -3,4 +3,4 @@ object_type: metric
 label: Cumulative_Sales_sum
 calculation_method: maximum
 column: cumulativesales
-dataset: factinternetsales
+dataset: factinternetsales_ranked_by_product

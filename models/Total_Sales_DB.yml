@@ -38,3 +38,19 @@ relationships:
     to:
       dimension: Date Dimension Generated
       level: DateKeyDecimal
+  - unique_name: factinternetsales_productkey_to_Product_Product
+    from:
+      dataset: factinternetsales
+      join_columns:
+        - productkey
+    to:
+      dimension: Product
+      level: Product_Code
+  - unique_name: factinternetsales_ranked_by_product_productkey_to_Product_Product_Code
+    from:
+      dataset: factinternetsales_ranked_by_product
+      join_columns:
+        - productkey
+    to:
+      dimension: Product
+      level: Product_Code

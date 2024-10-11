@@ -10,26 +10,6 @@ columns:
     data_type: string
   - name: productkey
     data_type: int
-
-  - name: product_info
-    map:
-      field_terminator: ","
-      key_terminator: ':'
-      key_type: String
-      value_type: String
-  - name: color
-    data_type: string
-    parent_column: product_info
-  - name: size
-    data_type: string
-    parent_column: product_info
-  - name: style
-    data_type: string
-    parent_column: product_info
-  - name: weight
-    data_type: string
-    parent_column: product_info
-
   - name: orderdatekey
     data_type: int
   - name: customerkey
@@ -48,33 +28,26 @@ columns:
     data_type: int
   - name: currencykey
     data_type: int
-  - name: salesrank
-    data_type: int
-  - name: cumulativesales
-    data_type: double
 connection_id: con_atscale_inc_atscale_tutorials_as_adventure
-sql: |-
+sql: |+
   SELECT
-      DENSE_RANK() OVER (ORDER BY salesamount DESC) AS salesrank,
+
       salesordernumber,
       salesorderlinenumber,
       sales_reasons,
       productkey,
-      product_info,
       orderdatekey,
       customerkey,
-      orderquantity,
+      orderquantity,  
       unitprice,
       salesamount,
       taxamt,
       orderdate,
       shipdatekey,
-      currencykey,
-      SUM(salesamount) OVER (
-          ORDER BY salesamount DESC 
-          ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-      ) AS cumulativesales
-  FROM as_adventure.factinternetsales
+      currencykey
+
+  FROM as_adventure.factinternetsales 
+
   WHERE orderdate >= '"2006-01-01 00:00:00"'
     AND orderdate < '"2006-03-31 00:00:00"'
-  ORDER BY salesrank ASC
+
