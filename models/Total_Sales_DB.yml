@@ -10,7 +10,6 @@ dimensions:
   - Weight
   - Style
 metrics:
-  - unique_name: Sales_Order_Line_Number_sum
   - unique_name: Order_Quantity_sum
   - unique_name: Unit_Price_sum
   - unique_name: Sales_Amount_sum
