@@ -3,7 +3,7 @@ object_type: dataset
 label: dimproduct
 columns:
   - name: productkey
-    data_type: int
+    data_type: string
   - name: englishproductname
     data_type: string
   - name: listprice

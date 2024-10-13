@@ -4,4 +4,3 @@ label: Sales_Rank_sum
 calculation_method: sum
 column: salesrank
 dataset: factinternetsales_ranked_by_product
-

@@ -15,7 +15,6 @@ hierarchies:
             key_columns:
               - productsubcategorykey
             name_column: productsubcategoryname
-            sort_column: productsubcategorykey
           - unique_name: Product_Line
             label: Product_Line
             contains_unique_names: false
@@ -32,6 +31,14 @@ hierarchies:
             key_columns:
               - productkey
             name_column: englishproductname
+          - unique_name: Product_List_Price
+            label: Product_List_Price
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - listprice
+            name_column: listprice
 level_attributes:
   - unique_name: Product_Code
     label: Product_Code
@@ -41,5 +48,4 @@ level_attributes:
     key_columns:
       - productkey
     name_column: productkey
-    sort_column: productkey
 type: standard

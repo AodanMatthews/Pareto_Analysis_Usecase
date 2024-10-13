@@ -20,6 +20,7 @@ metrics:
   - unique_name: Sales_Rank_sum
   - unique_name: Cumulative_Sales_%_of_Total
   - unique_name: Blank
+  - unique_name: Montlhy_Sales_Amount_sum
 relationships:
   - unique_name: factinternetsales_orderdatekey_to_Date Dimension Generated_DateKeyDecimal
     from:
@@ -37,17 +38,17 @@ relationships:
     to:
       dimension: Date Dimension Generated
       level: DateKeyDecimal
-  - unique_name: factinternetsales_productkey_to_Product_Product
+  - unique_name: factinternetsales_ranked_by_product_productkey_to_Product_Product_Code
     from:
-      dataset: factinternetsales
+      dataset: factinternetsales_ranked_by_product
       join_columns:
         - productkey
     to:
       dimension: Product
       level: Product_Code
-  - unique_name: factinternetsales_ranked_by_product_productkey_to_Product_Product_Code
+  - unique_name: factinternetsales_productkey_to_Product_Product_Code
     from:
-      dataset: factinternetsales_ranked_by_product
+      dataset: factinternetsales
       join_columns:
         - productkey
     to:

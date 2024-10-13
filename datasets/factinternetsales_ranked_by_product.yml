@@ -2,10 +2,8 @@ unique_name: factinternetsales_ranked_by_product
 object_type: dataset
 label: factinternetsales_ranked_by_product
 columns:
-  - name: sales_reasons
-    data_type: string
   - name: productkey
-    data_type: int
+    data_type: string
   - name: product_info
     map:
       field_terminator: ','
@@ -32,23 +30,21 @@ columns:
     data_type: double
   - name: taxamt
     data_type: double
-  - name: currencykey
-    data_type: int
   - name: salesrank
     data_type: int
   - name: cumulativesales
     data_type: double
+    
 connection_id: con_atscale_inc_atscale_tutorials_as_adventure
-sql: >
+sql: |-
   SELECT
       DENSE_RANK() OVER ( ORDER BY sum(salesamount) DESC) AS salesrank,
-      dimproduct.productkey as productkey,
+      productkey,
       product_info,
       sum(orderquantity) as orderquantity,  
       avg(unitprice) as unitprice,
       sum(salesamount) as salesamount,
       sum(taxamt) as taxamt,
-      currencykey,
       sum( sum(salesamount) ) OVER (
           ORDER BY sum(salesamount) DESC 
           ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
@@ -56,19 +52,13 @@ sql: >
   FROM as_adventure.factinternetsales 
 
 
-  INNER JOIN as_adventure.dimproduct  ON factinternetsales.productkey =
-  dimproduct.productkey
-
-
   WHERE orderdate >= '"2006-01-01 00:00:00"'
-    AND orderdate < '"2006-03-31 00:00:00"'
+    AND orderdate < '"2006-12-31 00:00:00"'
 
 
-  GROUP BY  
-  
-  dimproduct.productkey, 
-  product_info, 
-  currencykey
+  GROUP BY 
+  productkey,
+  product_info
 
-
-  ORDER BY  salesrank ASC
+  ORDER BY 
+  salesrank ASC
