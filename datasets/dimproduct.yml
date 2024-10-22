@@ -6,15 +6,63 @@ columns:
     data_type: string
   - name: englishproductname
     data_type: string
-  - name: listprice
-    data_type: double
-  - name: startdate
-    data_type: datetime
   - name: productsubcategorykey
-    data_type: long
+    data_type: int
   - name: productline
     data_type: string
-  - name: productsubcategoryname
-    data_type: string
+  - name: productrank
+    data_type: int
 connection_id: con_atscale_inc_atscale_tutorials_as_adventure
-table: dimproduct
+sql: |-
+  WITH productrank AS 
+  (
+  SELECT
+      DENSE_RANK() OVER ( ORDER BY sum(salesamount) DESC, sum(orderquantity) DESC) AS productrank,
+      productkey
+
+  FROM 
+      as_adventure.factinternetsales 
+   
+  WHERE orderdate >= '"2006-01-01 00:00:00"'
+    AND orderdate <= '"2006-12-01 00:00:00"'
+   
+  GROUP BY
+  productkey
+  ),
+
+  producttable AS
+  (
+  SELECT
+      productkey,
+      englishproductname,
+      productline,
+      productsubcategorykey 
+
+  FROM 
+       as_adventure.dimproduct
+       
+  WHERE productline IN ('M ', 'R ')
+
+  )
+
+  SELECT
+      productrank.productrank,
+      producttable.productkey,
+      producttable.englishproductname,
+      producttable.productline,
+      producttable.productsubcategorykey
+
+  FROM productrank
+
+  INNER JOIN producttable ON productrank.productkey = producttable.productkey 
+
+
+  GROUP BY 
+      productrank.productrank,
+      producttable.productkey,
+      producttable.englishproductname,
+      producttable.productline,
+      producttable.productsubcategorykey
+
+  ORDER BY 
+      productrank.productrank

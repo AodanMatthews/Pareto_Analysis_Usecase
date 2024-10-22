@@ -4,61 +4,67 @@ label: factinternetsales_ranked_by_product
 columns:
   - name: productkey
     data_type: string
-  - name: product_info
-    map:
-      field_terminator: ','
-      key_terminator: ':'
-      key_type: String
-      value_type: String
-  - name: color
-    data_type: string
-    parent_column: product_info
-  - name: size
-    data_type: string
-    parent_column: product_info
-  - name: style
-    data_type: string
-    parent_column: product_info
-  - name: weight
-    data_type: string
-    parent_column: product_info
   - name: orderquantity
     data_type: long
-  - name: unitprice
-    data_type: double
   - name: salesamount
     data_type: double
-  - name: taxamt
-    data_type: double
-  - name: salesrank
+  - name: productrank
     data_type: int
-  - name: cumulativesales
-    data_type: double
-    
 connection_id: con_atscale_inc_atscale_tutorials_as_adventure
-sql: |-
+sql: |+
+  WITH productrank AS 
+  (
   SELECT
-      DENSE_RANK() OVER ( ORDER BY sum(salesamount) DESC) AS salesrank,
+      DENSE_RANK() OVER ( ORDER BY sum(salesamount) DESC, sum(orderquantity) DESC) AS productrank,
+      productkey
+
+  FROM 
+      as_adventure.factinternetsales 
+   
+  WHERE orderdate >= '2006-01-01T00:00:00.000'
+    AND orderdate <= '2006-12-01T00:00:00.000'
+
+  GROUP BY
+  productkey
+  ),
+
+  salesrank AS
+  (
+  SELECT
       productkey,
-      product_info,
-      sum(orderquantity) as orderquantity,  
-      avg(unitprice) as unitprice,
-      sum(salesamount) as salesamount,
-      sum(taxamt) as taxamt,
-      sum( sum(salesamount) ) OVER (
-          ORDER BY sum(salesamount) DESC 
-          ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-      ) AS cumulativesales
-  FROM as_adventure.factinternetsales 
+      sum(orderquantity) AS orderquantity,
+      sum(salesamount) AS salesamount
+      
+  FROM 
+       as_adventure.factinternetsales 
+
+  WHERE orderdate >= '2006-01-01T00:00:00.000'
+    AND orderdate <= '2006-12-01T00:00:00.000'
 
 
-  WHERE orderdate >= '"2006-01-01 00:00:00"'
-    AND orderdate <= '"2006-12-31 00:00:00"'
+  GROUP BY
+  productkey
+  )
+
+  SELECT
+      productrank.productrank,
+      salesrank.productkey,
+      sum(orderquantity) AS orderquantity,
+      sum(salesamount) AS salesamount
+      
+
+  FROM salesrank
+
+  INNER JOIN productrank ON salesrank.productkey = productrank.productkey 
 
 
   GROUP BY 
-  productkey,
-  product_info
+      productrank.productrank,
+      salesrank.productkey
 
-  ORDER BY 
-  salesrank ASC
+
+  ORDER BY
+      productrank,
+      productkey
+
+

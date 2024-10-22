@@ -1,0 +1,17 @@
+unique_name: Pareto Test
+object_type: model
+label: Pareto Test
+dimensions: []
+metrics: []
+relationships:
+
+
+  - unique_name: factinternetsales_ranked_by_product_productkey_to_Product_Product
+    from:
+      dataset: factinternetsales_ranked_by_product
+      join_columns:
+        - productkey
+        - productrank
+    to:
+      dimension: Product
+      level: Product
