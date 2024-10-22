@@ -49,5 +49,5 @@ sql: |+
   FROM as_adventure.factinternetsales 
 
   WHERE orderdate >= '"2006-01-01 00:00:00"'
-    AND orderdate < '"2006-12-31 00:00:00"'
+    AND orderdate <= '"2006-12-31 00:00:00"'
 
