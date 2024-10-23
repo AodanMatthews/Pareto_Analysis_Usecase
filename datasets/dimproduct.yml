@@ -12,13 +12,33 @@ columns:
     data_type: string
   - name: productrank
     data_type: int
+  - name: product_info
+    map:
+      field_terminator: ","
+      key_terminator: ':'
+      key_type: String
+      value_type: String
+  - name: color
+    data_type: string
+    parent_column: product_info
+  - name: size
+    data_type: string
+    parent_column: product_info
+  - name: style
+    data_type: string
+    parent_column: product_info
+  - name: weight
+    data_type: string
+    parent_column: product_info
+
 connection_id: con_atscale_inc_atscale_tutorials_as_adventure
 sql: |-
   WITH productrank AS 
   (
   SELECT
       DENSE_RANK() OVER ( ORDER BY sum(salesamount) DESC, sum(orderquantity) DESC) AS productrank,
-      productkey
+      productkey,
+      product_info
 
   FROM 
       as_adventure.factinternetsales 
@@ -27,7 +47,8 @@ sql: |-
     AND orderdate <= '"2006-12-01 00:00:00"'
    
   GROUP BY
-  productkey
+  productkey,
+  product_info
   ),
 
   producttable AS
@@ -47,6 +68,7 @@ sql: |-
       productrank.productrank,
       producttable.productkey,
       producttable.englishproductname,
+      productrank.product_info,
       producttable.productline,
       producttable.productsubcategorykey
 
@@ -59,6 +81,7 @@ sql: |-
       productrank.productrank,
       producttable.productkey,
       producttable.englishproductname,
+      productrank.product_info,
       producttable.productline,
       producttable.productsubcategorykey
 

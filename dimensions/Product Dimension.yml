@@ -10,6 +10,39 @@ hierarchies:
       - unique_name: Product Sub-Category
       - unique_name: Product Line
       - unique_name: Product Name
+        secondary_attributes:
+          - unique_name: Colour
+            label: Colour
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - color
+            name_column: color
+          - unique_name: Size
+            label: Size
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - size
+            name_column: size
+          - unique_name: Weight
+            label: Weight
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - weight
+            name_column: weight
+          - unique_name: Style
+            label: Style
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - style
+            name_column: style
       - unique_name: Product Code
         secondary_attributes:
           - unique_name: Product Code Degen
