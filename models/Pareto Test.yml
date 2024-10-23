@@ -2,16 +2,22 @@ unique_name: Pareto Test
 object_type: model
 label: Pareto Test
 dimensions: []
-metrics: []
+metrics:
+  - unique_name: Sales_Amount_sum
+  - unique_name: Order_Quantity_sum
+  - unique_name: Total_Sales_sum
+  - unique_name: Sales_%_of_Total
+  - unique_name: Blank
+  - unique_name: Cumulative %
+  - unique_name: Cumulative Sales
 relationships:
-
-
-  - unique_name: factinternetsales_ranked_by_product_productkey_to_Product_Product
+  - unique_name: >-
+      factinternetsales_ranked_by_product_productkey_to_Product
+      Dimension_Product Code
     from:
       dataset: factinternetsales_ranked_by_product
       join_columns:
         - productkey
-        - productrank
     to:
-      dimension: Product
-      level: Product
+      dimension: Product Dimension
+      level: Product Code

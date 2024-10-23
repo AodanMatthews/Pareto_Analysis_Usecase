@@ -1,0 +1,11 @@
+unique_name: Cumulative Sales
+object_type: metric_calc
+label: Cumulative Sales
+expression: >-
+  SUM(  
+
+  {[Product Dimension].[Product Code Degen].CurrentMember.Parent.FirstChild :
+  [Product Dimension].[Product Code Degen].CurrentMember}
+
+   , [Measures].[Sales_Amount_sum] )
+is_hidden: false

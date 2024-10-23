@@ -1,7 +1,8 @@
 unique_name: Total_Sales_sum
 object_type: metric_calc
 label: Total_Sales_sum
-description: Total Sales Ignoring Filters
-expression: ALLMEMBEREXCEPT([Measures].[Sales_Amount_sum], {[Product Hierarchy].[Product Hierarchy]} )
+description: Total Sales for period
+expression: >-
+  ALLMEMBEREXCEPT( [Measures].[Sales_Amount_sum], {[Product Dimension].[Product Dimension]} )
 format: standard
 is_hidden: false

@@ -1,14 +1,26 @@
-unique_name: Product
+unique_name: Product Dimension
 object_type: dimension
-label: Product
+label: Product Dimension
 hierarchies:
-  - unique_name: Product Hierarchy
-    label: Product
+  - unique_name: Product Dimension
+    label: Product Dimension
+    filter_empty: 'yes'
     levels:
       - unique_name: Product Category
       - unique_name: Product Sub-Category
       - unique_name: Product Line
-      - unique_name: Product
+      - unique_name: Product Name
+      - unique_name: Product Code
+        secondary_attributes:
+          - unique_name: Product Code Degen
+            label: Product Code
+            contains_unique_names: false
+            dataset: dimproduct
+            is_unique_key: false
+            key_columns:
+              - productrank
+            name_column: productkey
+            sort_column: productrank
 level_attributes:
   - unique_name: Product Category
     label: Product Category
@@ -34,17 +46,32 @@ level_attributes:
     key_columns:
       - productline
     name_column: productline
-  - unique_name: Product
-    label: Product
+  - unique_name: Product Name
+    label: Product Name
     contains_unique_names: false
     dataset: dimproduct
     is_unique_key: false
     key_columns:
       - productkey
-      - productrank
     name_column: englishproductname
-
+  - unique_name: Product Code
+    label: Product Code
+    contains_unique_names: false
+    dataset: dimproduct
+    is_hidden: true
+    is_unique_key: false
+    key_columns:
+      - productkey
+    name_column: productkey
+    sort_column: productrank
 relationships:
+  - from:
+      dataset: dimproductsubcategory
+      join_columns:
+        - productcategorykey
+    to:
+      level: Product Category
+    type: snowflake
   - from:
       dataset: dimproduct
       join_columns:
@@ -53,10 +80,10 @@ relationships:
       level: Product Sub-Category
     type: snowflake
   - from:
-      dataset: dimproductsubcategory
+      dataset: factinternetsales_ranked_by_product
       join_columns:
-        - productcategorykey
+        - productkey
     to:
-      level: Product Category
+      level: Product Name
     type: snowflake
 type: standard

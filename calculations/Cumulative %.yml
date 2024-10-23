@@ -1,0 +1,5 @@
+unique_name: Cumulative %
+object_type: metric_calc
+label: Cumulative %
+expression: '[Measures].[Cumulative Sales] / [Measures].[Total_Sales_sum]'
+is_hidden: false

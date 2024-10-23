@@ -40,8 +40,6 @@ sql: |-
 
   FROM 
        as_adventure.dimproduct
-       
-  WHERE productline IN ('M ', 'R ')
 
   )
 

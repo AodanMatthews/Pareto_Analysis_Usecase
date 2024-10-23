@@ -1,6 +1,0 @@
-unique_name: Cumulative_Sales_%_of_Total
-object_type: metric_calc
-label: Cumulative_Sales_%_of_Total
-expression: DIVIDE( [Measures].[Cumulative_Sales_sum], [Measures].[Total_Sales_sum] )
-format: percent
-is_hidden: false
