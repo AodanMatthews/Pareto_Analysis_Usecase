@@ -9,11 +9,11 @@ hierarchies:
       - unique_name: Product Category
       - unique_name: Product Sub-Category
       - unique_name: Product Line
+      - unique_name: Product Name
       - unique_name: Color
       - unique_name: Size
       - unique_name: Style
       - unique_name: Weight
-      - unique_name: Product Name
       - unique_name: Product Code
         secondary_attributes:
           - unique_name: Product Code Degen
